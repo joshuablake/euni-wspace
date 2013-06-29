@@ -3,9 +3,12 @@
 from Map.models import System, SignatureType, Map
 from Map.signals import signature_update
 from datetime import datetime
+from django.conf.urls import include, patterns
 from django.contrib.auth.models import User
 from django.db import models
 from django.dispatch.dispatcher import receiver
+from euniwspace import urls
+from evewspace.urls import urlpatterns
 
 class ScannerLog(models.Model):
     user = models.ForeignKey(User)
@@ -27,3 +30,5 @@ def add_log(**kwargs):
     ScannerLog(user=kwargs['user'], time=datetime.now(), system=signature.system,
         sigid=signature.sigid, sig_type=signature.sigtype,
         info=signature.info, strength=signal_strength, map=kwargs['map']).save()
+
+urlpatterns += patterns('', (r'^euni/', include(urls)))
