@@ -8,6 +8,7 @@ from euniwspace.models import ScannerLog
 import datetime
 
 def CSV_scanners(request, auth, map_id, from_date, to_date=None):
+    """Take logs between requested dates and display in csv"""
     if settings.EUNI_AUTH != auth: raise PermissionDenied 
     if not to_date:
         to_date = datetime.date.today()

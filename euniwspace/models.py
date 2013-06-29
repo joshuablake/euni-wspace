@@ -3,14 +3,12 @@
 from Map.models import System, SignatureType, Map
 from Map.signals import signature_update
 from datetime import datetime
-from django.conf.urls import include, patterns
 from django.contrib.auth.models import User
 from django.db import models
 from django.dispatch.dispatcher import receiver
-from euniwspace import urls
-from evewspace.urls import urlpatterns
 
 class ScannerLog(models.Model):
+    """Stores a log of someone scanning"""
     user = models.ForeignKey(User)
     time = models.DateTimeField()
     system = models.ForeignKey(System)
@@ -22,6 +20,7 @@ class ScannerLog(models.Model):
 
 @receiver(signature_update)
 def add_log(**kwargs):
+    """Adds new log when a signature is updated"""
     signature = kwargs['sender']
     try:
         signal_strength = kwargs['signal_strength']
@@ -30,5 +29,10 @@ def add_log(**kwargs):
     ScannerLog(user=kwargs['user'], time=datetime.now(), system=signature.system,
         sigid=signature.sigid, sig_type=signature.sigtype,
         info=signature.info, strength=signal_strength, map=kwargs['map']).save()
+
+#Hack so that we can have our own views without editing settings.py
+from django.conf.urls import patterns, include
+from euniwspace import urls
+from evewspace.urls import urlpatterns
 
 urlpatterns += patterns('', (r'^euni/', include(urls)))
