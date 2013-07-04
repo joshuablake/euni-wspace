@@ -31,7 +31,7 @@ Example URL to get all scanning logs since the start of 2013 on map with id 1:
 https://euni.evewspace.com/euni/scanners/AUTH/1/2013-01-01.xml
 
 ### Example Output ###
-XML
+#### XML ####
 ```XML
 <scanners>
   <log>
@@ -55,9 +55,9 @@ XML
 </scanners>
 ```
 
-CSV
+#### CSV ####
 ```CSV
 Scanner,Time,System,Signature ID,Type,Info,Strength
-josh,2013-06-22 12:00,NJ4X-S,AAS,Gas Site,,
-josh,2013-07-04 14:35,J211036,AIG-472,Ore Site,Ordinary ,
+Terra,2013-06-22 12:00,NJ4X-S,AAS,Gas Site,,
+Marbin,2013-07-04 14:35,J211036,AIG-472,Ore Site,Ordinary ,
 ```
