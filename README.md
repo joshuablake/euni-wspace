@@ -29,3 +29,35 @@ Parameters are as follows:
 
 Example URL to get all scanning logs since the start of 2013 on map with id 1:
 https://euni.evewspace.com/euni/scanners/AUTH/1/2013-01-01.xml
+
+### Example Output ###
+XML
+```XML
+<scanners>
+  <log>
+    <user>Terra</user>
+    <time>2013-06-22T12:00:54+00:00</time>
+    <system>NJ4X-S</system>
+    <id>AAS</id>
+    <type>Gas Site</type>
+    <info></info>
+    <strength>None</strength>
+  </log>
+  <log>
+    <user>Marbin</user>
+    <time>2013-07-04T14:35:32+00:00</time>
+    <system>J211036</system>
+    <id>AIG-472</id>
+    <type>Ore Site</type>
+    <info>Ordinary</info>
+    <strength>None</strength>
+  </log>
+</scanners>
+```
+
+CSV
+```CSV
+Scanner,Time,System,Signature ID,Type,Info,Strength
+josh,2013-06-22 12:00,NJ4X-S,AAS,Gas Site,,
+josh,2013-07-04 14:35,J211036,AIG-472,Ore Site,Ordinary ,
+```
