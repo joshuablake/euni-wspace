@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scanners>
+	{% for log in logs %}
+	<log>
+		<user>{{ log.user.username }}</user>
+		<time>{{ log.time|date:"c" }}</time>
+		<system>{{ log.system.name }}</system>
+		<id>{{ log.sigid }}</id>
+		<type>{{ log.sig_type.longname }}</type>
+		<info>{{ log.info }}</info>
+		<strength>{{ log.strength }}</strength>
+	</log>
+	{% endfor %}
+</scanners>
