@@ -31,8 +31,12 @@ def scanners(request, auth, map_id, from_date, format, to_date=None):
         csv.writerow(('Scanner', 'Time', 'System', 'Signature ID', 'Type', 'Info',
                      'Strength'))
         for log in logs:
+            try:
+                longname = log.sig_type.longname
+            except:
+                longname = ''
             csv.writerow((log.user.username, log.time.strftime('%Y-%m-%d %H:%M'),
-                         log.system.name, log.sigid, log.sig_type.longname, 
+                         log.system.name, log.sigid, longname, 
                          log.info, log.strength))
         return response
      
